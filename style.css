@@ -1,0 +1,62 @@
+/*main top container */
+.main-top-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* player and computer score display inside its flex container*/
+.score-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 25px;
+}
+.player-score-box{
+    align-self: flex-start;
+
+}
+.computer-score-box{
+    align-self: flex-end;
+}
+
+/*displays the winner*/
+.winner-box{
+    align-self: center;
+    height: 20px;
+}
+
+/* player section */
+.player-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* rock, papper, scissor images which are clickage e.g. buttons */
+.btn{
+    width: 150px;
+    height: 150px;
+}
+
+
+/* computer section */
+
+.computer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* restart button container and button*/
+
+.R-btn-container{
+    text-align: center;
+}
+
+
+

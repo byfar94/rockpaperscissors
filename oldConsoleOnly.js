@@ -19,6 +19,9 @@ function playRound(){
     let playerSelection = playerChoice();
     const winner = checkWinner(computerSelection, playerSelection);
     winAr.push(winner);
+    
+    console.log(`player: ${playerSelection}`);
+    console.log(`computer: ${computerSelection}`);
     console.log(winner);
 }   
 

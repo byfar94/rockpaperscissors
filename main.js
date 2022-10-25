@@ -18,62 +18,81 @@ let winAr= [];
 //will execute the checkWinner function using computerSelection and playerSelection parameters, will push the "winner" (e.g. the "player", "computer", or "tie") to the Array winAr
 function playRound(playerInput){
 
-    //defining variaables
-    let computerSelection = getComputerChoice();
-    let playerSelection = playerInput;
+    //defining variable
+    const computerSelection = getComputerChoice();
 
     //adding checkWinner function to variable and pushing the result to the array winAr
-    const winner = checkWinner(computerSelection, playerSelection);
+    const winner = checkWinner(computerSelection, playerInput);
     winAr.push(winner);
 
     //will display computer choice
-    computerChoiceShow.textContent = `Computer Chose: ${getComputerChoice()}`;
+    computerChoiceShow.textContent =`Computer Chose: ${computerSelection}`;
     
     //will display who won when either the computer or player has won
-    logTheWinner()
+    logTheWinner();
+
+    /*testing
+    console.log(`player choice:${playerInput}`);
+    console.log(typeof playerInput);
+    console.log(`computer choice:${computerSelection}`);
+    console.log(typeof computerSelection);
+    console.log(checkWinner(computerSelection, playerInput));
+    console.log(winner);*/
+
 }   
 
 //randomly generates a number from 0 - .99 with Math.random and multiplys that by choices.length (3) which give a number betwen 0 - 2.97. Then round down using math.floor which will give 0, 1, or 2. This is done to index the array using [] which can be will return "rock" for choices[0] and so on. 
 function getComputerChoice(){
-    return choices[Math.floor(Math.random() * choices.length)];
+    return choices[Math.floor(Math.random()*choices.length)];
  }
-
 
 //Check winner and return player, computer, or tie
 function checkWinner(computerSelection, playerSelection){
-    if (computerSelection === playerSelection) {
+    if (computerSelection == playerSelection) {
         return "tie";
-    } else if (computerSelection === "rock" && playerSelection === "paper") {
+    } else if (computerSelection == "rock" && playerSelection == "paper") {
         return "player";
-    } else if (computerSelection === "rock" && playerSelection ==="scissors") {
+    } else if (computerSelection == "rock" && playerSelection =="scissors") {
         return "computer";
-    } else if (computerSelection === "paper" && playerSelection === "rock") {
+    } else if (computerSelection == "paper" && playerSelection == "rock") {
        return "computer";
-    } else if (computerSelection === "paper" && playerSelection  === "scissors") {
+    } else if (computerSelection == "paper" && playerSelection  == "scissors") {
       return "player";
-    } else if (computerSelection === "scissors" && playerSelection  === "rock") {
+    } else if (computerSelection == "scissors" && playerSelection  == "rock") {
         return "player";
-    } else (computerSelection === "scissors" && playerSelection === "paper"); {
+    } else if (computerSelection == "scissors" && playerSelection == "paper") {
       return "computer";
-    }   
+    }
 }
 
+function test (){
+console.log("tie")
+console.log(checkWinner("rock","rock"));
+console.log(checkWinner("paper","paper"));
+console.log(checkWinner("scissors","scissors"));
+console.log("player wins")
+console.log(checkWinner("rock","paper"));
+console.log(checkWinner("scissors","rock"));
+console.log("computer wins")
+console.log(checkWinner("rock","scissors"));
+console.log(checkWinner("paper","rock"));
+}
 
 //filter function is lopping over the winAr and creating a new function based on the other function we use within it here it is saying if the item = "player" it will be added to the new array. The same is done with Computer. if player gets added 3 times and computer is added twice the array lenght of playerWins will be 3 and the computerWins will be 2. We can use this to figure out who has the most wins and is the ultimate winner of the game based on the if, else statement below. This if, else statment needs to be done inside the function because the playerWins and ComputerWins are defined within the function logTheWinner. the if/ else statement will display "player has won the game" if the playerWins array count equals 5.
 
 function logTheWinner() {
-    let playerWins = winAr.filter((item) => item == "player").length;
-    let computerWins = winAr.filter((item) => item == "computer").length;
+    let playerWins = winAr.filter((item) => item == "player");
+    let computerWins = winAr.filter((item) => item == "computer");
 
-    playerScoreBox.textContent = `player score:${playerWins}`;
-    computerScoreBox.textContent = `computer score:${computerWins}`;
+    playerScoreBox.textContent =`player score:${playerWins.length}`;
+    computerScoreBox.textContent =`computer score:${computerWins.length}`;
 
     if (playerWins == 5){
-        winnerBox.textContent = "Player has Won the Game";
+        winnerBox.textContent ="Player has Won the Game";
     } else if (computerWins == 5) {
-        winnerBox.textContent = "Computer has Won the Game";
+        winnerBox.textContent ="Computer has Won the Game";
     } else if (computerWins > 5 || playerWins > 5){
-        winnerBox.textContent = "Restart the Game!"
+        winnerBox.textContent ="Restart the Game!"
     }
 }
 
@@ -90,16 +109,24 @@ paperButton.addEventListener("click", function (){
 
 let scissorsButton = document.querySelector("#scissors");
 scissorsButton.addEventListener("click", function (){
-   playRound("scissor");
+   playRound("scissors");
 })
 
 //will reset WinAr and display the new player score (playerWins) and computer score (computerWins), which will be 0.
 let restartButton = document.querySelector(".restart-btn");
 restartButton.addEventListener("click", function() {
+    //clears main array
      winAr = [];
 
+     //clears computer and player score
      let playerWins = winAr.filter((item) => item == "player").length;
     let computerWins = winAr.filter((item) => item == "computer").length;
-     playerScoreBox.textContent = `player score:${playerWins}`;
-    computerScoreBox.textContent = `computer score:${computerWins}`;
+     playerScoreBox.textContent =`player score:${playerWins}`;
+    computerScoreBox.textContent =`computer score:${computerWins}`;
+
+    //clear winner message
+    winnerBox.textContent = "";
+
+    //clear computer message
+    computerChoiceShow.textContent ="Computer Chose:";
 })

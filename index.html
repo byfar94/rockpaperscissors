@@ -5,28 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
+    <div class="main-top-container">
         <div class="score-container">
             <div class="player-score-box"></div>
             <div class="computer-score-box"></div>
         </div>
         <h3 class="winner-box"></h3>
     </div>
-    <div>
+    <div class="player-container">
         <h2 class="player-header">Player Pick</h2>
         <div class="player-btn-container">
-            <button class="btn" id="rock">Rock</button>
-            <button class="btn" id="paper">Papper</button>
-            <button class="btn" id="scissors">Scissors</button>
+            <img src="images/rock-img.svg" class="btn" id="rock">
+            <img src="images/paper-img.svg" class="btn" id="paper">
+            <img src="images/scissor-img.svg" class="btn" id="scissors">
         </div>
     </div>
-    <div>
+    <div class="computer-container">
         <h2 class="computer-header">Computer Pick</h2>
         <p class="computer-choice-box"></p>
     </div>
-    <div>
+    <div class="R-btn-container">
         <button class="restart-btn">Restart</button>
     </div>
 <script src="main.js"></script>
